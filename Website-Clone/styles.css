@@ -12,7 +12,6 @@ h2{
     font-size: 200%;
 }
 .header {
-    border: 1px solid red;
     height: 14vh;
     display: flex;
     justify-content: space-between;
@@ -23,12 +22,12 @@ h2{
     padding: 15px;
 }
 
-ul {
+.header ul {
     display: flex;
     justify-content: space-around;
 }
 
-li {
+.header li {
     display:block;
     padding: 10px;
     margin-top: 8px;
@@ -43,25 +42,23 @@ li:hover{
     width: 150px;
     margin: 10px;
     margin: 20px 5px 8px;
-    background-color: cyan;
+    background-color: rgb(79 181 185);
     color: white;
     font-weight: bold;
     font-size: large;
     border-radius: 4px;
-    border-color: aqua;
-
-}
+border: none;}
 
 .contact-btn2 {
     height: 8vh;
     width: 180px;
     margin-top: 30px;
-    background-color: cyan;
+    background-color: rgb(79 181 185);
     color: white;
     font-weight: bold;
     font-size: large;
     border-radius: 4px;
-    border-color: aqua;
+    border: none;
 }
 
 .hamburger {
@@ -77,7 +74,6 @@ li:hover{
 .container1 {
     background-image: url(https://sattu-pharma-tech-web.vercel.app/assets/HeroImage.png);
     background-repeat: no-repeat;
-    border: 2px solid black;
   /* padding: 60px; */
   background-size: 1250px 485px;
   height: auto;
@@ -108,32 +104,34 @@ li:hover{
 
 .container2 {
     height: auto;
-    border: 1px solid red;
     padding-right: 460px;
     padding-top: 60px;
     padding-bottom: 60px;
 }
 
 .container3 {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: auto;
-    width: 1250px;
+    width: auto;
 }
 .container3-cards {
     height: auto;
     padding-top: 50px;
-    width: 1240px;
+    width: auto;
     display: flex;
     flex-direction: row; 
      justify-content: space-between;
-
-     border: 1px solid purple;
+     align-items: center;
+justify-content: center;
+     /* border: 1px solid purple; */
      flex-wrap: wrap;
+     gap: 13px;
 }
 .card {
     height: 35vh;
     width: 380px;
-    border: 1px solid brown;
+    border: 2px solid gainsboro;
+    border-radius: 6px;
     /* padding: 10px; */
 }
 p3 {
@@ -150,25 +148,41 @@ p4 {
 
 
 .hr {
-    border: 3px solid greenyellow; 
+    border: 3px solid cadetblue; 
     width: 60px;
     margin: 12px;
     margin-left: 15px;
 }
 
+.container4 {
+    /* border: 1px solid red; */
+    margin-bottom: 20px;
+}
 .container5 {
     height: auto;
-    border: 1px solid red;
-    display: flex;
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: 60% 40%;
     flex-direction: row;
+    flex-wrap: wrap;
+
 }
 
+/* .con5-inner{
+    border: 1px solid green;
+} */
+
 .container5-inner {
-    height: auto;
-    border: 1px solid blue;
+    /* height: auto;
+    width: auto; */
+    /* border: 1px solid blue; */
     padding: 10px;
     display: flex;
     flex-direction: column;
+}
+
+.container5-inner p5 {
+    color: cadetblue;
 }
 
 p5{
@@ -184,16 +198,21 @@ p6{
 
 .container6 {
     height: auto;
-    border: 1px solid red;
-    display: flex;
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: 40% 60%;
     flex-direction: row;
     margin-top: 30px;
+}
+
+.container6-inner p5 {
+    color: cadetblue;
 }
 
 
 .container6-inner {
     height: auto;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -202,7 +221,7 @@ p6{
 
 .container7 {
     height: auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .container7-cards {
@@ -211,59 +230,74 @@ p6{
     flex-wrap: wrap;
 padding: 20px;
 justify-content: space-around;
+gap: 20px;
 }
 
 .card-7 {
     height: 35vh;
     width: 550px;
-    border: 1px solid brown;
+    border: 1px solid yellow;
     padding: 10px;
     margin-bottom: 20px;
+    background-color: rgb(253, 248, 224);
+    border-radius: 6px;
 }
 
 .card7-in {
-    height: auto;
+    height: 10vh;
     width: 70px;
     border: 1px solid yellow;
+    padding: 10px;
+    padding-right: 10px;
+    /* padding-left: 30px;
+    padding-top: 30px; */
 }
 
 .container8 {
     height: auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    text-align: right;
+    width: auto;
 }
 
 .container9 {
     height: auto;
-    border: 1px solid red;
-    display: flex;
+    border: 1px solid gray;
+    border-radius: 6px;
+    display: grid;
+    /* flex-wrap: wrap; */
+    grid-template-columns: 50% 50%;
+    flex-wrap: wrap;
     padding: 10px;
+    background-color: rgb(243, 238, 238);
 }
 
 .container9-inner {
     height: auto;
-    border: 1px solid green;
+    /* border: 1px solid green; */
   display: flex;
   flex-wrap: wrap;
-  width: 580px;
+  /* width: 580px; */
+  gap: 5px;
     
 }
 
 input[type=text] {
-    width: 100%;
+    width: 280px;
     padding: 12px 10px;
     /* margin: 8px 0; */
     box-sizing: border-box;
   }
 
   .container9-input {
-    width: 280px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
   }
 
   textarea {
-    width: 200%;
+    width: 100%;
     height: 150px;
     padding: 12px 20px;
     box-sizing: border-box;
@@ -277,23 +311,29 @@ input[type=text] {
   
 
   .btn2 {
+    border: rgb(91, 194, 158);
     height: 8vh;
     width: 580px;
     margin-top: 30px;  
-    
+    background-color: rgb(91, 194, 158);
+    border-radius: 8px;
 }
 
 .footer {
-    height: 80vh;
-    border: 1px solid black;
-    display: flex;
+    height: auto;
+    /* border: 1px solid black; */
+    display: grid;
+    grid-template-columns: 50% 50%;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .footer-inner1 {
-    border: 1px solid pink;
-    height: 70vh;
-    width: 620px;
+    /* border: 1px solid pink; */
+    height: auto;
+    /* width: 620px; */
     padding-top: 10px;
+    padding-right: 10px;
 }
 
 
@@ -301,6 +341,22 @@ input[type=text] {
 display: flex;
 
 
+}
+
+.foot li {
+    display:block;
+    padding: 10px;
+    margin-top: 0;
+    font-size: large;
+}
+
+.foot ul li {
+    font-size: small;
+}
+
+.foot ul li:first-child {
+    font-size: 15px;
+    font-weight: bold;
 }
 
 /* .footer-inner2 > ul {
@@ -312,7 +368,7 @@ display: flex;
     display: block;
  }
 
- ul, .contact-btn {
+ .header ul, .contact-btn {
     display: none;
  }
 
@@ -321,13 +377,25 @@ display: flex;
     display: flex;
     /* flex-direction: column; */
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
  }
 
- .container1-inner >p1{
+ .container1-inner p1 {
     font-size: 5vh;
     line-height: 100%;
-    font-weight: bold; }
+    font-weight: bold; 
+    text-align: center;
+}
+
+.hr {
+    margin-left: auto;
+    justify-content: center;
+}
+
+.btn2 {
+    margin-bottom: 30px;
+    width: 100%;
+}
 
     #text1{
         display: none;
@@ -336,33 +404,62 @@ display: flex;
     .container1-inner2 {
         margin: auto;
         padding-top: 10px;
+        margin-top: 40px;
+        height: auto;
+        padding-left: 10px;
     }
 
     .container2 {
         padding-right: 10px;
+
+        padding-left: 20px;
         width: auto;
     }
 
-    .container3{
+    .card{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
         width: auto;
+        padding-right: 10px;
+    }
+    .container3{
+        width: 100%;
+    }
+    .con3-head {
+        margin-left: 20px;
     }
     .container3-cards{
-        width: auto;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 10px;
+        margin-left: 20px;
     }
 
     .container5 {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        flex-wrap: wrap;
 
         
     }
+
+    .container5-inner {
+          width: auto;
+          height: auto;
+    }
+
+    .con5-inner {
+        width: auto;
+        height: auto;
+    }
+
     #img1 {
-         height: 30vh;
+         /* height: 30vh; */
+         width: 100%;
     }
 
     .container6 {
@@ -371,6 +468,10 @@ display: flex;
         justify-content: center;
     }
 
+    .card-7 {
+        height: auto;
+        width: auto;
+    }
     .container9 {
         display: flex;
         flex-direction: column;
@@ -382,12 +483,48 @@ display: flex;
     }
 
     #img2 {
-        height: 30vh;
+        /* height: 30vh; */
+        display: none;
+    }
+    .footer {
+        flex-wrap: wrap;
+        display: block;
+
+    }
+
+    .footer-inner2{
+        flex-wrap: wrap;
     }
 }
 
+@media (max-width: 1030px) {
+
+    /* .container3-cards{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px; */
+        /* margin-left: 10px;
+        justify-content: center;
+    } */
+#img2 {
+    display: none;
+}
+
+.container9 {
+    justify-content: center;
+}
+
+}
+
+@media (max-width: 330px) {
 
 
+    .card-7{
+        width: auto;
+    }
+}
 
 
 /* echo "# Task-HTML-CSS" >> README.md
