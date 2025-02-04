@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body-inner {
+    display: flex;
+    border: 1px solid black;
+    justify-content: flex-start;
+}
+.main-header {
+    border: 1px solid brown;
+    height: 15vh;
+    background-color: black;
+    align-items: center;
+}
+
+.container {
+    display:flex;
+    justify-content: space-around;
+    background-color: black;
+    align-items: center;
+}
+
+.logo {
+    height: 10vh;
+    align-items: center;
+}
+.menu-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li {
+    display: block;
+    padding: 5px;
+    color: aliceblue;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.btn {
+  background-color: cornflowerblue;
+}
+/*
+.body {
+    margin: 0;
+    background-image: url(https://serviots.com/wp-content/uploads/2024/11/Home-page-image-1.png);
+    height: auto;
+    min-width: 100vw;
+}
+    */
+.hamburger{
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+@media (max-width:600px) {
+    .menu-list {
+        display: none;
+    }
+    .hamburger {
+        display:block;
+        
+    }
+    .logo {
+        height: 5vh;
+    }
+    
+}
+
+@media (max-width:200px) {
+    .logo {
+        height: 4vh;
+    }
+    .hamburger {
+        margin-right: 10px;
+    }
+    
+}
+
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    
+    <div class="header">
+        <h1>Portfolio</h1> 
+    </div>
+
+
+    <div style="width: 100%; height: fit-content">
+        <h2>DEVANSH RIMZA</h2>
+        <img src="https://www.hindustantimes.com/static-content/1y/cricket-logos/players/virat-kohli.png" usemap="#workmap" style="margin-left: 5cm">
+        <map name="workmap">
+            <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm">
+            <area shape="rect" coords="290,172,333,250" alt="Phone" href="phone.htm">
+            <area shape="circle" coords="337,300,44" alt="Cup of coffee" href="coffee.htm">
+          </map>
+        
+        <br>
+        <button id="navigateButton" type="button" style="margin-left: 8cm" onclick='pr'>Profile</button>
+        <script>
+            document.getElementById("navigateButton").onclick = function () {
+                window.location.href = "profile.html";
+            };
+        </script>
+    </div>
+
+    
+        <footer style="margin-bottom: 1ch; height: 2cm; background-color: rgba(173, 170, 167, 0.934);">
+            <small>Copyright
+            <address>
+                <a href="virat@gmail.com">virat@gmail.com</a><br />
+                <a href="tel:+917654876665">+1 (415) 555‑0132</a>
+              </address>
+            </small>
+          </footer>
+    
+</body>
+</html>

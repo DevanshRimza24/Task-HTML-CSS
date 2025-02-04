@@ -1,0 +1,15 @@
+p {
+color:brown;
+}
+
+.component {
+    text-align: right;
+    align-content: center;
+}
+
+.header {
+    height: 2cm; 
+    background-color: antiquewhite; 
+    text-align: center;
+    padding-top: 1px;
+}
