@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+      "target": "ES5",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+    //   "outDir": "./dist"
+    }
+    // "include": ["src/**/*"]
+  }
+  
+
+
+
+
+
+
+// {
+//     "compilerOptions": {
+//       "target": "es5",              // Specify the ECMAScript target version
+//       "module": "commonjs",         // Module system (Node.js)
+//       "outDir": "./dist",           // Output folder for compiled JS files
+//       "rootDir": "./src",           // Root folder where your TS files are located
+//       "strict": true,               // Enable strict type checking
+//       "esModuleInterop": true,      // Allow default imports from modules with no default export
+//       "skipLibCheck": true,         // Skip type checking of declaration files
+//       "forceConsistentCasingInFileNames": true // Ensure consistent casing of file names
+//     },
+//     "include": [
+//       "src/**/*.ts"   // Include all TypeScript files inside the 'src' folder
+// , "index.ts"    ],
+//     "exclude": [
+//       "node_modules"  // Exclude 'node_modules' folder
+//     ]
+//   }
+  
