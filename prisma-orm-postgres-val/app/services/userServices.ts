@@ -9,6 +9,11 @@ export const createUser = async (name : string, email : string, password : strin
             email,
             password : hashedPassword,
         },
+        select : {
+          id : true,
+         name : true,
+         email : true,
+        }
       })
 
       return user;
@@ -16,18 +21,32 @@ export const createUser = async (name : string, email : string, password : strin
 
 
 export const getUsers = async () => {
-    return await prisma.user.findMany();
+    return await prisma.user.findMany({
+      where : {isDeleted: false},
+      select : {id : true, name: true, email: true},
+    });
+
+
+
+
 };
 
-export const updateUser = async (id : number, name: string, email: string) => {
+export const updateUser = async (id : number, name: string, email: string, password: string, isDeleted?: boolean) => {
     console.log(id,name, email);
 
   return await prisma.user.update({
     where : {id},
     data : {
          name,
-         email 
+         email,
+         password, 
+         isDeleted
         },
+        select : {
+          id : true,
+         name : true,
+         email : true,
+        }
   });
 };
 
@@ -35,7 +54,10 @@ export const updateUser = async (id : number, name: string, email: string) => {
 export const deleteUser = async (id : number) => {
     // console.log(id);
 
-  return await prisma.user.delete({
+  return await prisma.user.update({
     where : {id},
+    data : {
+      isDeleted : true
+  },
   });
 };
