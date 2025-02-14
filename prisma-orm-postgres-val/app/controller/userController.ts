@@ -1,9 +1,24 @@
 import { userInfo } from "os";
 import { Request, Response } from "express";
-import { createUser, getUsers, updateUser, deleteUser } from "../services/userServices";
+import { loginUser, createUser, getUsers, updateUser, deleteUser } from "../services/userServices";
 import prisma from "../repository/userRepository";
 import { checkValidationResult } from "../helper/validatorFuntion";
 import defaultResponse from "../helper/validatorFuntion";
+
+
+export const loginUserProfile = async (req : Request, res : Response) => {
+    try {
+        const error = checkValidationResult(req);
+        const { email, password } = req.body;
+        const {token, user} = await loginUser(email, password);
+        defaultResponse( res , 200 , 'User Logged In Successfully' , { token, user}, null);
+    } catch (error) {
+        defaultResponse( res , 400 , 'Error occured in loggin user' , null, error);
+    }
+}
+
+
+
 
 export const addUserProfile = async (req: Request, res: Response) => {
 
@@ -97,7 +112,7 @@ export const updateUserProfile = async (req: Request, res: Response) => {
                 email,
             },
         })
-        if (userByEmail) {
+        if (!userByEmail) {
 
             const validationError = {
                 status: 400,

@@ -1,4 +1,4 @@
-// import { validationResult as expressValidationResult } from "express-validator";
+// import { validationResult } from "express-validator";
 const { validationResult } = require("express-validator");
 import { Request, Response } from "express";
 
