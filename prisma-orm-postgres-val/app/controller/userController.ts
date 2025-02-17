@@ -17,6 +17,11 @@ export const loginUserProfile = async (req : Request, res : Response) => {
     }
 }
 
+export const logoutUserProfile = async (req : Request, res : Response) => {
+    (req as any).token = null;
+    defaultResponse( res , 200 , 'User Logged Out Successfully' , null, null);
+
+}
 
 
 

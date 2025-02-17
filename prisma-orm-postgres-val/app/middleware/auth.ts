@@ -12,7 +12,7 @@ const JWT_SECRET = process.env.JWT_SECRET as string;
 export const userAuth = (req: Request, res: Response, next: NextFunction) => {
    const token = req.header("Authorization")?.replace("Bearer ", "");
    if(!token) {
-    defaultResponse( res , 200 , 'Access denied, No token provided ' , null, null);
+    defaultResponse( res , 400 , 'Access denied, No token provided ' , null, null);
     return;
    }
 

@@ -27,6 +27,9 @@ export const loginUser = async (email : string, password : string) => {
 
   const token= jwt.sign({ userId : user.id, email : user.email}, JWT_SECRET, {expiresIn: "1d"});
 
+// const refreshToken = 
+
+
   return {token, user: { id : user.id, name: user.name, email: user.email,}};
 }
 
@@ -63,7 +66,7 @@ export const getUsers = async () => {
 };
 
 export const updateUser = async (id : number, name: string, email: string, password: string, isDeleted?: boolean) => {
-    console.log(id,name, email);
+    // console.log(id,name, email);
     const hashedPassword = await bcrypt.hash(password,10);
   return await prisma.user.update({
     where : {id},
