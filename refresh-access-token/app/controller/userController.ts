@@ -1,8 +1,21 @@
-import { createUser, updateUser} from "../services/userServices";
+import { createUser, updateUser, loginUser} from "../services/userServices";
 import { Request, Response } from "express";
 import prisma from "../repository/userRepository";
 import { checkValidationResult } from "../helper/validatorFunctions";
 import defaultResponse from "../helper/validatorFunctions";
+
+
+export const loginUserProfile = async (req : Request, res : Response) => {
+    try {
+        const error = checkValidationResult(req);
+        const { email, password } = req.body;
+        const {token, user} = await loginUser(email, password);
+        defaultResponse( res , 200 , 'User Logged In Successfully' , { token, user}, null);
+    } catch (error) {
+        defaultResponse( res , 400 , 'Error occured in loggin user' , null, error);
+    }
+}
+
 
 export const signUpUserProfile = async (req : Request, res : Response) => {
     try {
