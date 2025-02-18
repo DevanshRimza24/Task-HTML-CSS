@@ -4,8 +4,14 @@ import userRoutes from "./app/routes/userRoutes";
 import { userAuth } from "./app/middleware/auth";
 import bodyParser from "body-parser";
 import userAuthRouter from "./app/routes/userAuth";
-const app : Application = express();
+const cors = require("cors");
 
+// const app : Application = express();
+const app = express();
+
+
+
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use("/api",userAuthRouter);
@@ -14,7 +20,7 @@ app.use("/api",userRoutes);
 
 const prisma = new PrismaClient;
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3001;
 
 prisma.$connect().then(() => {
     console.log("Database Connection Established");
