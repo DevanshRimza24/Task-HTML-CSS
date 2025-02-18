@@ -1,10 +1,12 @@
 import { Router } from "express"
-import { signUpUserProfile } from "../controller/userController";
-
+import { signUpUserProfile, updateUserProfile } from "../controller/userController";
+import { validateUser, validateUserId, validateUpdateUser } from "../middleware/validators";
 const router : Router = Router();
 
-router.post("/signup-user-profile", signUpUserProfile);
+router.post("/signup-user-profile", validateUser, signUpUserProfile);
+// router.post("/add-user-profile", userAuth, validateUser,addUserProfile);
 
+router.patch('/update-user-profile/:id', validateUserId, validateUpdateUser, updateUserProfile);
 
 
 
