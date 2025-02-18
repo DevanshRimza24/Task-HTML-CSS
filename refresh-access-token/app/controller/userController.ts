@@ -1,20 +1,64 @@
-import { createUser, updateUser, loginUser} from "../services/userServices";
+import { createUser, updateUser, loginUser, refreshAccessToken} from "../services/userServices";
 import { Request, Response } from "express";
 import prisma from "../repository/userRepository";
 import { checkValidationResult } from "../helper/validatorFunctions";
 import defaultResponse from "../helper/validatorFunctions";
 
 
-export const loginUserProfile = async (req : Request, res : Response) => {
+export const loginUserProfile = async (req: Request, res: Response) => {
     try {
-        const error = checkValidationResult(req);
-        const { email, password } = req.body;
-        const {token, user} = await loginUser(email, password);
-        defaultResponse( res , 200 , 'User Logged In Successfully' , { token, user}, null);
+      const { email, password } = req.body;
+      const { accessToken, refreshToken, user } = await loginUser(email, password);
+  
+      res.cookie("refreshToken", refreshToken, { httpOnly: true, secure: true });
+      defaultResponse( res , 200 , 'User Logged In Successfully' , { accessToken, user}, null);
+
+    //   sendResponse(true, "Login successful", res, 200, { accessToken, user });
     } catch (error) {
-        defaultResponse( res , 400 , 'Error occured in loggin user' , null, error);
+    //   sendResponse(false, error.message, res, 401);
+    defaultResponse( res , 200 , 'error.message' , null, null);
+
     }
-}
+  };
+  
+  export const refreshToken = async (req: Request, res: Response) => {
+    try {
+      const refreshToken = req.cookies.refreshToken;
+      if (!refreshToken) {
+        // sendResponse(false, "Refresh token not found", res, 403);
+        defaultResponse( res , 200 , 'Refresh token not found' , null, null);
+
+        return;
+      }
+  
+      const { accessToken, refreshToken: newRefreshToken } = await refreshAccessToken(refreshToken);
+  
+      res.cookie("refreshToken", newRefreshToken, { httpOnly: true, secure: true });
+      defaultResponse( res , 200 , 'Access token refreshed' , { accessToken}, null);
+
+    //   sendResponse(true, "Access token refreshed", res, 200, { accessToken });
+    } catch (error) {
+    //   sendResponse(false, error.message, res, 403);
+    defaultResponse( res , 200 , 'errror.message' , null, null);
+
+    }
+  };
+  
+
+
+
+// ------
+
+// export const loginUserProfile = async (req : Request, res : Response) => {
+//     try {
+//         const error = checkValidationResult(req);
+//         const { email, password } = req.body;
+//         const {token, user} = await loginUser(email, password);
+//         defaultResponse( res , 200 , 'User Logged In Successfully' , { token, user}, null);
+//     } catch (error) {
+//         defaultResponse( res , 400 , 'Error occured in loggin user' , null, error);
+//     }
+// }
 
 
 export const signUpUserProfile = async (req : Request, res : Response) => {
