@@ -10,7 +10,7 @@ const REFRESH_EXPIRES_DAYS =  "7" as string;
 
 export const generateTokens = async (userId : Number, email : string) => {
 
-  const accessToken= jwt.sign( {userId , email} , JWT_SECRET, {expiresIn: "5min"});
+  const accessToken= jwt.sign( {userId , email} , JWT_SECRET, {expiresIn: "2min"});
   const refreshToken= jwt.sign( {userId , email} , JWT_REFRESH_SECRET, {expiresIn: "1d"});
 
   return { accessToken, refreshToken};
@@ -31,12 +31,12 @@ export const storeRefreshToken = async (userId: number, refreshToken: string) =>
   });
 };
 
-export const registerUser = async (name: string, email: string, password: string) => {
-  const hashedPassword = await bcrypt.hash(password, 10);
-  return prisma.user.create({
-    data: { name, email, password: hashedPassword },
-  });
-};
+// export const registerUser = async (name: string, email: string, password: string) => {
+//   const hashedPassword = await bcrypt.hash(password, 10);
+//   return prisma.user.create({
+//     data: { name, email, password: hashedPassword },
+//   });
+// };
 
 // -------------------
 
