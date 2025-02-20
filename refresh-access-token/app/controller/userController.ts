@@ -9,8 +9,9 @@ export const loginUserProfile = async (req: Request, res: Response) => {
     try {
       const { email, password } = req.body;
       const { accessToken, refreshToken, user } = await loginUser(email, password);
-  
-      res.cookie("refreshToken", refreshToken, { httpOnly: true, secure: true });
+      res.cookie("accessToken", accessToken, { httpOnly: true, secure: true });
+
+    //   res.cookie("refreshToken", refreshToken, { httpOnly: true, secure: true });
       defaultResponse( res , 200 , 'User Logged In Successfully' , { accessToken, user}, null);
 
     //   sendResponse(true, "Login successful", res, 200, { accessToken, user });

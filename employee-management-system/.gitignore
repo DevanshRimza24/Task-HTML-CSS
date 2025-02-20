@@ -1,0 +1,62 @@
+node_modules
+# Keep environment variables out of version control
+.env
+
+# model Employee {
+#   id            String       @id @default(uuid())
+#   name          String
+#   dateOfBirth   DateTime
+#   gender        Gender
+#   contactNumber Int
+#   email         String
+#   departmentId  String
+#   department    Department   @relation(fields: [departmentId], references: [id])
+#   attendance    Attendance[]
+#   leave         Leave[]
+#   training      Training[]
+# }
+
+# model Department {
+#   id             String     @id @default(uuid())
+#   departmentName String
+#   location       String
+#   employee       Employee[]
+#   project        Project[]
+# }
+
+# model Attendance {
+#   id           String   @id @default(uuid())
+#   employeeId   String
+#   date         DateTime
+#   checkInTime  DateTime
+#   checkOutTime DateTime
+#   employee     Employee @relation(fields: [employeeId], references: [id])
+# }
+
+# model Leave {
+#   leaveId    String   @id @default(uuid())
+#   employeeId String
+#   leaveType  String
+#   status     String
+#   employee   Employee @relation(fields: [employeeId], references: [id])
+# }
+
+# model Project {
+#   id           String     @id @default(uuid())
+#   projectName  String
+#   departmentId String
+#   status       String
+#   department   Department @relation(fields: [departmentId], references: [id])
+# }
+
+# model Training {
+#   id         String   @id @default(uuid())
+#   employeeId String
+#   status     String
+#   employee   Employee @relation(fields: [employeeId], references: [id])
+# }
+
+# enum Gender {
+#   Male
+#   Female
+# }
