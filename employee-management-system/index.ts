@@ -4,18 +4,17 @@ import bodyParser from "body-parser";
 import {Request, Response} from "express";
 import CustomError from "./app/errorHandler/customError";
 import { errorHandler } from "./app/controller/errorController";
+import { noRouteFound } from "./app/helper/noRouteFound";
 
 const app = express();
 
 
 app.use(bodyParser.json());
+
 app.use("/api",userRoutes);
 
 
-app.use((req : Request, res : Response, next : NextFunction ) => {
- const err = new CustomError(`Cant find ${req.originalUrl} on server`, 404);
- next(err);
-});
+app.use(noRouteFound);
 
 app.use(errorHandler);
 
