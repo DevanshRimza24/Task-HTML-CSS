@@ -1,11 +1,24 @@
 import { body } from "express-validator";
 
-
+const genders = [
+    "Male",
+    "Female"
+  ]
 
 export const validateDepartment = [
     body("departmentName").trim().notEmpty().withMessage("Department name is required"),
     body("location").trim().notEmpty().withMessage("Location is required"),
 
+]
+
+export const validateEmployee = [
+    body("name").trim().notEmpty().withMessage("Name is required"),
+    body("dateOfBirth").isDate().withMessage("Date of Birth is required"),
+    body("gender").isIn(genders).withMessage("Correct Gender is required"),
+    body("contactNumber").isNumeric().withMessage("Contact Number is required"),
+
+    body("email").isEmail().withMessage("Invalid Email Id"),
+    body("departmentId").trim().notEmpty().withMessage("Department Id is required"),
 ]
 
 

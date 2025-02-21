@@ -1,19 +1,15 @@
-import { createEmployee, createDepartment } from "../services/userServices";
+import { createEmployee, createDepartment, getDepartments } from "../services/departmentServices";
 import { NextFunction, Request, Response } from "express";
 import DefaultResponse from "../helper/defaultResponseFunction";
 import { checkValidationResult } from "../helper/validatorFunction";
 import CustomError from "../errorHandler/customError";
-export const createEmployeeProfile = (req: Request, res: Response) => {
-    const { name, dateOfBirth, gender, contactNumber, email, departmentId } = req.body;
 
-}
 
 export const createDepartmentTable = async (req: Request, res: Response, next : NextFunction) => {
 
     try{
         const error = checkValidationResult(req);
         const { departmentName, location } = req.body;
-        console.log(departmentName)
         const department = await createDepartment(departmentName, location);
         // res.status(200).json(department);
         DefaultResponse(res, 200, 'Department Created Successfully', department, null);
@@ -25,4 +21,18 @@ export const createDepartmentTable = async (req: Request, res: Response, next : 
         
     }
     
+}
+
+export const getDepartmentDetails = async (req: Request, res: Response, next : NextFunction) => {
+    try {
+        const departments = await getDepartments();
+        
+        DefaultResponse( res , 200 , 'Department details fetched Successfully' , departments, null);
+
+
+    } catch (error) {
+        // res.status(400).json({ error: "Error getting users" });
+        next(error);
+
+    }
 }

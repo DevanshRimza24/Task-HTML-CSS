@@ -13,3 +13,7 @@ export const createDepartment = async (departmentName : string, location : strin
       })
       return department; 
 }
+
+export const getDepartments = async () => {
+    return await prisma.department.findMany();
+}

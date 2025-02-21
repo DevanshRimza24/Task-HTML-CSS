@@ -1,12 +1,13 @@
 import { Router } from "express";
-import {createEmployeeProfile, createDepartmentTable} from "../controller/userController";
-import { validateDepartment } from "../middleware/validators";
+import { createDepartmentTable, getDepartmentDetails} from "../controller/departmentController";
+import { validateDepartment, validateEmployee } from "../middleware/validators";
+import { createEmployeeProfile } from "../controller/employeeController";
 
 const router = Router();
 
-router.post("/create-employee-profile", createEmployeeProfile);
+router.post("/create-employee-profile", validateEmployee, createEmployeeProfile);
 router.post("/create-department-table", validateDepartment, createDepartmentTable);
-
+router.get("/get-departments-detail", getDepartmentDetails);
 
 
 
