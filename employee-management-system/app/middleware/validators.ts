@@ -22,6 +22,16 @@ export const validateEmployee = [
 ]
 
 
+export const validateUpdateEmployee = [
+    body("name").optional().trim().notEmpty().withMessage("Name is required"),
+    body("dateOfBirth").optional().isDate().withMessage("Date of Birth is required"),
+    body("gender").optional().isIn(genders).withMessage("Correct Gender is required"),
+    body("contactNumber").optional().isNumeric().withMessage("Contact Number is required"),
+    body("email").optional().isEmail().withMessage("Invalid Email Id"),
+
+    // body("password").optional().isLength({ min: 5 }).withMessage("Password must be atleast 5 character"),
+]
+
 // {
 //     "status": 200,
 //     "message": "Department Created Successfully",

@@ -16,6 +16,21 @@ export const createEmployee = async (name : string, dateOfBirth : Date, gender :
       return employee; 
 }
 
+export const updateEmployee = async (id : string, name : string, dateOfBirth : Date, gender : Gender, contactNumber : number, email : string) => {
+    // console.log(id,name, email);
+  return await prisma.employee.update({
+    where : {id},
+    data : {
+         name,
+         dateOfBirth : new Date(dateOfBirth),
+         gender,
+         contactNumber,
+         email,
+        },
+        
+  });
+};
+
 export const getEmployees = async () => {
-    return await prisma.department.findMany();
+    return await prisma.employee.findMany();
 }
