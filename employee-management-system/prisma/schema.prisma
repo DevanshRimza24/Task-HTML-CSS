@@ -25,6 +25,7 @@ model Employee {
   attendance    Attendance[]
   leave         Leave[]
   training      Training[] 
+  refreshToken RefreshToken[]
 }
 
 model Department {
@@ -42,6 +43,14 @@ model Attendance {
   checkInTime  DateTime 
   checkOutTime DateTime 
   employee     Employee @relation(fields: [employeeId], references: [id])
+}
+
+model RefreshToken {
+  id    String   @id @default(uuid())
+  token String
+  employeeId String    
+  employee   Employee   @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
 }
 
 model Leave {
