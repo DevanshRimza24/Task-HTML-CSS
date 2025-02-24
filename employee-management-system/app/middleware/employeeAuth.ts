@@ -5,6 +5,7 @@ import prisma from "../repository/userRepository";
 import { NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import DefaultResponse from "../helper/defaultResponseFunction";
+import CustomError from "../errorHandler/customError";
 dotenv.config();
 
 const JWT_SECRET = process.env.JWT_ACCESS_SECRET as string;
@@ -13,7 +14,7 @@ const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET as string;
 export const employeeAuth = (req: Request, res: Response, next: NextFunction) => {
    const token = req.header("Authorization")?.replace("Bearer ", "");
    if(!token) {
-    DefaultResponse( res , 400 , 'Access denied, No token provided ' , null, null);
+    throw new CustomError("Access denied, No token provided",404)
     return;
    }
 
@@ -22,12 +23,9 @@ export const employeeAuth = (req: Request, res: Response, next: NextFunction) =>
     (req as any).user = decoded;
     next()
    } catch (error : any) {
-   //   TokenExpiredError: jwt expired
-   // console.log('----------------',error.TokenExpiredError);
-      // if(error.TokenExpiredError){
+   
          if(error.name === 'TokenExpiredError'){
          console.log("Hello");
-         //const token = req.header("Authorization")?.replace("Bearer ", "");
 
          const decoded = jwt.decode(token) as JwtPayload;
 
@@ -35,13 +33,12 @@ export const employeeAuth = (req: Request, res: Response, next: NextFunction) =>
             where: { employeeId: decoded.id },
           }).then((storedRefreshToken) => {
             if (!storedRefreshToken || new Date() > storedRefreshToken?.expiresAt) {
-               throw new Error("Invalid or expired refresh token");
+               throw new CustomError("Invalid or expired refresh token",404);
              }
           })
 
          const newAccessToken= jwt.sign( {id : decoded.id , email : decoded.email} , JWT_SECRET, {expiresIn: "2min"});
           
-         // return { accessToken, user: { id: decoded.id, name: decoded.name, email: decoded.email } };
          DefaultResponse( res , 200 , 'User Logged In Successfully' , { newAccessToken, decoded}, null);
 
 
@@ -52,8 +49,8 @@ export const employeeAuth = (req: Request, res: Response, next: NextFunction) =>
          
 
 
-    DefaultResponse( res , 400 , 'Invalid Token ' , null, null);
-
+    // DefaultResponse( res , 400 , 'Invalid Token ' , null, null);
+    throw new CustomError("Invalid Token",404)
    }
 } 
 
