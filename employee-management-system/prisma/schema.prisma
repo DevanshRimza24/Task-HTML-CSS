@@ -21,6 +21,7 @@ model Employee {
   contactNumber Int
   email         String
   departmentId  String
+  isDeleted  Boolean    @default(false)
   department    Department   @relation(fields: [departmentId], references: [id])
   attendance    Attendance[]
   leave         Leave[]
@@ -42,6 +43,7 @@ model Attendance {
   date         DateTime
   checkInTime  DateTime 
   checkOutTime DateTime 
+  isDeleted  Boolean    @default(false)
   employee     Employee @relation(fields: [employeeId], references: [id])
 }
 

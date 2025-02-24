@@ -23,7 +23,6 @@ export const createEmployeeAttendance = async (req: Request, res: Response, next
 
         const attendance = await createAttendance(employeeId, date, checkInTime, checkOutTime);
         
-        // res.status(200).json(department);
         DefaultResponse(res, 200, 'Attendance details added Successfully', attendance, null);
     } 
     catch(error) {
@@ -41,9 +40,7 @@ export const getEmployeesAttendance = async (req: Request, res: Response, next :
 
 
     } catch (error) {
-        // res.status(400).json({ error: "Error getting users" });
         next(error);
-
     }
 }
 
@@ -52,7 +49,6 @@ export const getEmployeesAttendanceFromId = async (req: Request, res: Response, 
         
         const {employeeId} = req.params
         const attendance = await getAttendanceFromId(employeeId);
-        // console.log(attendance.length);
         if(attendance.length==0) {
             throw new CustomError("Attendance with provided Employee Id does not exists", 400);
         }
@@ -60,7 +56,6 @@ export const getEmployeesAttendanceFromId = async (req: Request, res: Response, 
 
 
     } catch (error) {
-        // res.status(400).json({ error: "Error getting users" });
         next(error);
 
     }

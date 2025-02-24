@@ -1,4 +1,4 @@
-import { createEmployee, getEmployees, updateEmployee } from "../services/employeeServices";
+import { createEmployee, getEmployees, updateEmployee, deleteEmployee } from "../services/employeeServices";
 import { NextFunction, Request, Response } from "express";
 import DefaultResponse from "../helper/defaultResponseFunction";
 import { checkValidationResult } from "../helper/validatorFunction";
@@ -88,3 +88,36 @@ export const getEmployeesProfiles = async (req: Request, res: Response, next : N
 
     }
 }
+
+export const deleteEmployeeProfile = async (req: Request, res: Response, next : NextFunction) => {
+    try {
+        checkValidationResult(req);
+        const { id } = req.params;
+        // const idNum = parseInt(id);
+        const employee = await prisma.employee.findUnique({
+            where: {
+                id
+            },
+        })
+        if (!employee) {
+            throw new CustomError("Employee does not exists",404)
+        }
+
+        
+
+
+
+
+        const deletedUser = await deleteEmployee(id);
+        // sendResponse(true, "User Deleted Successfully", res, 200);
+        DefaultResponse( res , 200 , 'Employee Deleted Successfully' , null, null);
+
+        // res.status(200).json("User deleted successfully");
+    } catch (error) {
+        // res.status(400).json({ error: error });
+        // defaultResponse( res , 400 , 'error in deleting account' , null, error);
+        next(error)
+
+    }
+
+};
