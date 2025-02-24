@@ -34,3 +34,5 @@ export const updateEmployee = async (id : string, name : string, dateOfBirth : D
 export const getEmployees = async () => {
     return await prisma.employee.findMany();
 }
+
+

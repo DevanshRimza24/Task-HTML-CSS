@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Attendance" ALTER COLUMN "checkInTime" SET DATA TYPE TIME,
+ALTER COLUMN "checkOutTime" SET DATA TYPE TIME;
