@@ -12,7 +12,6 @@ const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET as string;
 
 export const employeeAuth = (req: Request, res: Response, next: NextFunction) => {
    const token = req.header("Authorization")?.replace("Bearer ", "");
-   console.log(token)
    if(!token) {
     DefaultResponse( res , 400 , 'Access denied, No token provided ' , null, null);
     return;
