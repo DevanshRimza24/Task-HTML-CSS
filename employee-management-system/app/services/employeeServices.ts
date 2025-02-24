@@ -2,54 +2,49 @@ import { Gender } from "@prisma/client";
 import prisma from "../repository/employeeRepository";
 
 
-export const createEmployee = async (name : string, dateOfBirth : Date, gender : Gender, contactNumber : number, email : string, departmentId : string) => {
-    const employee = await prisma.employee.create({
-        data: {
-            name, 
-            dateOfBirth : new Date(dateOfBirth), 
-            gender, 
-            contactNumber, 
-            email, 
-            departmentId
-        },
-      })
-      return employee; 
+export const createEmployee = async (name: string, dateOfBirth: Date, gender: Gender, contactNumber: number, email: string, departmentId: string) => {
+  const employee = await prisma.employee.create({
+    data: {
+      name,
+      dateOfBirth: new Date(dateOfBirth),
+      gender,
+      contactNumber,
+      email,
+      departmentId
+    },
+  })
+  return employee;
 }
 
-export const updateEmployee = async (id : string, name : string, dateOfBirth : Date, gender : Gender, contactNumber : number, email : string) => {
-    // console.log(id,name, email);
+export const updateEmployee = async (id: string, name: string, dateOfBirth: Date, gender: Gender, contactNumber: number, email: string) => {
+  // console.log(id,name, email);
   return await prisma.employee.update({
-    where : {id},
-    data : {
-         name,
-         dateOfBirth : new Date(dateOfBirth),
-         gender,
-         contactNumber,
-         email,
-        },
-        
+    where: { id },
+    data: {
+      name,
+      dateOfBirth: new Date(dateOfBirth),
+      gender,
+      contactNumber,
+      email,
+    },
+
   });
 };
 
 export const getEmployees = async () => {
-    return await prisma.employee.findMany();
+  return await prisma.employee.findMany();
 }
 
 
-export const deleteEmployee = async (id : string) => {
+export const deleteEmployee = async (id: string) => {
   // console.log(id);
 
-  return await prisma.employee.delete({
-    where : {id},
-    
+  return await prisma.employee.update({
+    where: { id },
+    data: {
+      isDeleted: true
+    },
   });
-
-// return await prisma.employee.update({
-//   where : {id},
-//   data : {
-//     isDeleted : true
-// },
-// });
 };
 
 

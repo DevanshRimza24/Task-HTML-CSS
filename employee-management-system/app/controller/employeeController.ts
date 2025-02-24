@@ -103,6 +103,24 @@ export const deleteEmployeeProfile = async (req: Request, res: Response, next : 
             throw new CustomError("Employee does not exists",404)
         }
 
+
+        const employeeAttendance = await prisma.attendance.findMany({
+            where: {
+                id
+            },
+        })
+
+        if(employeeAttendance.length!=0) {
+            const updateAttendance = await prisma.attendance.updateMany({
+                where: {
+                  employeeId : id
+                },
+                data: {
+                  isDeleted: true
+                },
+              })
+        }
+
         
 
 
