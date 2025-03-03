@@ -44,7 +44,7 @@ export const userAuth = (req: Request, res: Response, next: NextFunction) => {
              }
           })
 
-         const newAccessToken= jwt.sign( {id : decoded.id , email : decoded.email} , JWT_SECRET, {expiresIn: "2min"});
+         const newAccessToken= jwt.sign( {id : decoded.id , email : decoded.email} , JWT_SECRET, {expiresIn: "1hr"});
           
          // return { accessToken, user: { id: decoded.id, name: decoded.name, email: decoded.email } };
          defaultResponse( res , 200 , 'User Logged In Successfully' , { newAccessToken, decoded}, null);

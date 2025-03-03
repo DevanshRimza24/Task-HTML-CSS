@@ -10,8 +10,8 @@ const REFRESH_EXPIRES_DAYS =  "7" as string;
 
 export const generateTokens = async (userId : Number, email : string) => {
 
-  const accessToken= jwt.sign( {userId , email} , JWT_SECRET, {expiresIn: "2min"});
-  const refreshToken= jwt.sign( {userId , email} , JWT_REFRESH_SECRET, {expiresIn: "1d"});
+  const accessToken= jwt.sign( {userId , email} , JWT_SECRET, {expiresIn: "1d"});
+  const refreshToken= jwt.sign( {userId , email} , JWT_REFRESH_SECRET, {expiresIn: "2d"});
 
   return { accessToken, refreshToken};
 
@@ -148,4 +148,15 @@ export const updateUser = async (id : number, name: string, email: string, passw
          email : true,
         }
   });
+};
+
+export const getUsers = async () => {
+  return await prisma.user.findMany({
+    where : {isDeleted: false},
+    select : {id : true, name: true, email: true},
+  });
+
+
+
+
 };

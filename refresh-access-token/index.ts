@@ -6,12 +6,15 @@ import bodyParser from "body-parser";
 import userAuthRouter from "./app/routes/userAuth";
 // const cors = require("cors");
 import cors from "cors";
+import { errorHandler } from "./app/controller/errorController";
+import { noRouteFound } from "./app/helper/noRouteFound";
+
 // const app : Application = express();
 const app = express();
 
 
 app.use(cors({
-    origin:'http://localhost:3000', 
+    origin:'http://localhost:5173', 
     credentials:true,            //access-control-allow-credentials:true
     // optionSuccessStatus:200
 }));
@@ -21,6 +24,11 @@ app.use(bodyParser.json());
 app.use("/api",userAuthRouter);
 
 app.use("/api",userRoutes);
+
+
+app.use(noRouteFound);
+
+app.use(errorHandler);
 
 const prisma = new PrismaClient;
 
