@@ -31,7 +31,6 @@ const storage = multer.diskStorage({
     } else {
         cb(new Error("Invalid file type"), false)
     }
-
   }
   
   const upload = multer({ storage: storage, fileFilter : fileFilter })
