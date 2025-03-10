@@ -1,4 +1,4 @@
-import { Request, Router } from "express"
+import { NextFunction, Request, Router } from "express"
 // import multer from "multer"
 const multer = require('multer')
 import path from "path"
@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
     if(allowedTypes.includes(file.mimetype)) {
         cb(null, true)
     } else {
-        cb(new Error("Invalid file type"), false)
+        cb(new CustomError("Invalid file type",422), false)
     }
   }
   
