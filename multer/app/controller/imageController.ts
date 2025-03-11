@@ -6,14 +6,17 @@ import defaultResponse from "../helper/validatorFunctions";
 export const uploadImageController = async (req: Request, res: Response, next: NextFunction) => {
 
     try {
-
-        const image = await uploadImage(req.file as Express.Multer.File);
-
+console.log(1)
+        const image = await uploadImage(req.file as Express.Multer.File, (req as any).user?.userId);
+        console.log(2)
         // res.send(image)
         defaultResponse(res, 200, 'Image Added Successfully', image, null);
-
+        console.log(3)
     } catch (error) {
-        next(error);
+        // next(error);
+        console.log('---------------',error)
+        //defaultResponse(res, 400, 'Image not Added Successfully', null, error);
+
     }
 };
 

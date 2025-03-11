@@ -5,6 +5,7 @@ import { PrismaClient } from "@prisma/client";
 import bodyParser from "body-parser";
 import path from "path"
 import imageRoutes from "./app/routes/imageRoutes"
+import authRoutes from "./app/routes/authRoutes"
 
 // import userAuthRouter from "./app/routes/userAuth";
 const cors = require("cors");
@@ -15,16 +16,19 @@ const cors = require("cors");
 // const app : Application = express();
 const app = express();
 
-app.use(cors())
-// app.use(cors({
-//     origin:'http://localhost:5173', 
-//     credentials:true,            
-//     // optionSuccessStatus:200
-// }));
+// app.use(cors())
+app.use(cors({
+    origin:'http://localhost:5173', 
+    credentials:true,            
+    // optionSuccessStatus:200
+}));
 
 // app.use(bodyParser.json());
 app.use(express.json())
 app.use("/uploads",express.static(path.join(__dirname, "uploads")));
+
+
+app.use("/api",authRoutes);
 
 app.use("/api",imageRoutes);
 

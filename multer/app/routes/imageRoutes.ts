@@ -4,6 +4,7 @@ const multer = require('multer')
 import path from "path"
 import CustomError from "../errorHandler/customError";
 import { getImageController, uploadImageController } from "../controller/imageController";
+import { isAdmin, verifyToken } from "../middleware/authMiddleware";
 // import { signUpUserProfile, updateUserProfile, getAllUsers } from "../controller/userController";
 // import { validateUser, validateUserId, validateUpdateUser } from "../middleware/validators";
 
@@ -41,7 +42,7 @@ interface RequestExtended extends Request {
     file?: any
 }
 
-router.post("/upload", upload.single("imageUrl"), uploadImageController);
+router.post("/upload", verifyToken, isAdmin, upload.single("imageUrl"), uploadImageController);
 
 
 
