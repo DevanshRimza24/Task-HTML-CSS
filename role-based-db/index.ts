@@ -5,7 +5,7 @@ const cors = require("cors");
 // import cors from "cors";
 import { errorHandler } from "./app/controller/errorController";
 import { noRouteFound } from "./app/helper/noRouteFound";
-
+import userRoutes from "./app/routes/userRoutes"
 // const app : Application = express();
 const app = express();
 
@@ -18,7 +18,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use("/api",);
+app.use("/api",userRoutes);
 
 // app.use("/api",userRoutes);
 
