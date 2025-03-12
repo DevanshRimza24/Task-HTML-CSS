@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <title>Email Template</title>
+
+    <style>
+      * {
+        font-family: Archivo;
+      }
+
+      hr {
+        border: 1px solid #dedede;
+      }
+
+      a {
+        color: #2969ff;
+      }
+
+      .email-template {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* gap: 16px; */
+        background-color: #cfcfcf40;
+        padding: 20px;
+      }
+
+      .header {
+        padding: 40px 48px 40px 48px;
+      }
+
+      .container {
+        max-width: 544px;
+        gap: 16px;
+      }
+
+      .container-top {
+        font-weight: 600;
+        /* font-family: ; */
+        font-size: 20px;
+        line-height: 150%;
+        letter-spacing: 0.2px;
+      }
+
+      .container-top p {
+        display: flex;
+        justify-content: center;
+      }
+
+      .container-greet p:nth-child(1) {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 150%;
+        letter-spacing: 0.2px;
+      }
+      .container-greet p:nth-child(2) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0.2px;
+      }
+
+      .container-contact {
+        display: flex;
+      }
+
+      .container-contact p {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0.2px;
+        width: 96px;
+      }
+
+      .container-contact-inner2 li {
+        display: block;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0.2px;
+      }
+
+      .container-explore-inner1 p {
+        color: #384860;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+        letter-spacing: 0.2%;
+        text-align: center;
+      }
+
+      .container-explore-inner2 {
+        display: flex;
+        justify-content: space-evenly;
+        text-align: center;
+        width: 275px;
+        margin: auto;
+      }
+
+      .footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .footer-icons {
+        text-align: center;
+      }
+      .footer-text p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 160%;
+        letter-spacing: 0.2%;
+        text-align: center;
+      }
+
+      /* .container hr {
+        width: 100%;
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="email-template">
+      <div>
+        <header class="header">
+          <img src="SVG 1.png" alt="" />
+        </header>
+      </div>
+
+      <div class="container">
+        <div class="container-top">
+          <p>Thank You for Your Submission!</p>
+          <p>We’ve Received Your Submission</p>
+        </div>
+
+        <hr />
+
+        <div class="container-greet">
+          <p>Hello Patron!</p>
+          <p>
+            Thank you for reaching out to Serviots. Your inquiry is being
+            reviewed by us!
+          </p>
+        </div>
+
+        <div class="container-greet">
+          <p>Project Details:</p>
+          <p>
+            We’ll outline a detailed proposal, explaining how we bring your
+            project to life.
+          </p>
+        </div>
+
+        <hr />
+
+        <div class="container-contact">
+          <p>Phones:</p>
+          <div class="container-contact-inner2">
+            <ul>
+              <li>(USA) +1 53044 70724,</li>
+              <li>(UAE) +971 58 520 1525,</li>
+              <li>(India) +91 8780234537</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="container-contact">
+          <p>Email:</p>
+          <div class="container-contact-inner2">
+            <ul>
+              <li><a href="mailto:info@serviots.com">info@serviots.com</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="container-explore">
+          <div class="container-explore-inner1">
+            <p>
+              Want to explore more details about us while we connect? You can
+              explore our insights and creativity
+            </p>
+          </div>
+          <div class="container-explore-inner2">
+            <p><a href="#">Blog</a></p>
+            <p><a href="#">|</a></p>
+            <p><a href="#"> Case Studies</a></p>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div class="footer-icons">
+            <img src="Frame 51.png" alt="" />
+          </div>
+
+          <div class="footer-text">
+            <p>
+              Your data is safe with us We protect your privacy and data with
+              DMCA & NDA
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
