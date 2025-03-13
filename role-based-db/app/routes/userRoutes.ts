@@ -1,10 +1,10 @@
 import { Router } from "express"
 import { createUser } from "../controller/userController";
-// import { signUpUserProfile, updateUserProfile, getAllUsers } from "../controller/userController";
-// import { validateUser, validateUserId, validateUpdateUser } from "../middleware/validators";
+import { verifyToken, isAdmin } from "../middleware/authMiddleware";
+
 const router : Router = Router();
 
-router.post("/create-user", createUser);
+router.post("/create-user", verifyToken, isAdmin, createUser)
 
 
 export default router;

@@ -5,22 +5,26 @@ const cors = require("cors");
 // import cors from "cors";
 import { errorHandler } from "./app/controller/errorController";
 import { noRouteFound } from "./app/helper/noRouteFound";
-import userRoutes from "./app/routes/userRoutes"
+// import userRoutes from "./app/routes/userRoutes"
+import authRouter from "./app/routes/authRoutes";
+import router from "./app/routes/userRoutes";
 // const app : Application = express();
 const app = express();
 
 
-// app.use(cors({
-//     origin:'http://localhost:5173', 
-//     credentials:true,           
-//     // optionSuccessStatus:200
-// }));
+app.use(cors({
+    origin:'http://localhost:5173', 
+    credentials:true,           
+    // optionSuccessStatus:200
+}));
 
-app.use(bodyParser.json());
+app.use(bodyParser.json())
 
-app.use("/api",userRoutes);
+app.use("/api", authRouter)
 
-// app.use("/api",userRoutes);
+app.use("/api",router)
+
+
 
 
 app.use(noRouteFound);
