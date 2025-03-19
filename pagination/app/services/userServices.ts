@@ -33,18 +33,14 @@ export const getUsers = async (skip : number = 0 , title : string, sortIn: strin
         where: {
           firstName : {
             contains : input,
-            mode : "insensitive"
+            // mode : "insensitive"
           }
           
         },
       })
 
-
-
-
     const take  = 10
-
-
+    
     const results = await prisma.user.findMany({
         skip,
         take,
