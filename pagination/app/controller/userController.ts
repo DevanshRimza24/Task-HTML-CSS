@@ -32,14 +32,23 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
         const { skip } = req.params
         const skipInt = parseInt(skip)
 
-        const { title, sortIn } = req.query
+        const { title, sortIn, input } = req.query
         // const title = "firstName"
         // const sortIn = "asc"
-        const users = await getUsers(skipInt, title as string, sortIn as string)
+
+        if(input !== '') {
+            const users = await getUsers(skipInt, title as string, sortIn as string, input as string)
+            DefaultResponse( res , 200 , 'Employees Profiles fetched Successfully' , users, null)
+        }
+        else {
+            const users = await getUsers(skipInt, title as string, sortIn as string)
 
         
         
-        DefaultResponse( res , 200 , 'Employees Profiles fetched Successfully' , users, null)
+            DefaultResponse( res , 200 , 'Employees Profiles fetched Successfully' , users, null)
+        }
+       
+       
         
         
 
