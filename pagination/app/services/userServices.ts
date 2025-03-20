@@ -26,20 +26,26 @@ interface title {
     language : string
 }
 
-export const getUsers = async (skip : number = 0 , title : string, sortIn: string = "asc", input ?: string) => {
+export const getUsers = async (skip : number = 0 , pageSize : number , title : string, sortIn: string = "asc", input ?: string) => {
 
 
+   
     const count = await prisma.user.count({
         where: {
           firstName : {
             contains : input,
-            // mode : "insensitive"
+            mode : "insensitive"
           }
           
         },
       })
 
-    const take  = 10
+    let take  = pageSize
+
+
+    if(count < take) {
+      take= count
+    }
     
     const results = await prisma.user.findMany({
         skip,
@@ -47,13 +53,14 @@ export const getUsers = async (skip : number = 0 , title : string, sortIn: strin
         where: {
             firstName: {
               contains: input,
+              mode : "insensitive"
             },
           },
         orderBy: {
             [title]  : sortIn,
           },
       })
-
+ 
       return {results, count}
     // return await prisma.user.findMany();
   }
